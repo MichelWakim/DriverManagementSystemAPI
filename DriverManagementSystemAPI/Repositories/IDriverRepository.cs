@@ -7,7 +7,7 @@ namespace DriverManagementSystemAPI.Repositories
 {
     public interface IDriverRepository
     {
-        Task<IEnumerable<Driver>?> GetAllDrivers();
+        Task<IEnumerable<Driver>?> GetAllDrivers(string? sortBy, string? sortOrder, string? searchTerm);
         Task<Driver?> GetDriverById(int id);
         Task<Driver> CreateDriver(Driver driver);
         Task<Driver?> UpdateDriver(int id, Driver driver);

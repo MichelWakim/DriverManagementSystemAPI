@@ -20,9 +20,9 @@ namespace DriverManagementSystemAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Driver>?> GetAllDrivers()
+        public async Task<IEnumerable<Driver>?> GetAllDrivers(string? sortBy = null, string? sortOrder = null, string? searchTerm = null)
         {
-            return await _service.GetAllDrivers();
+            return await _service.GetAllDrivers(sortBy, sortOrder, searchTerm);
         }
 
         [HttpGet("{id}")]

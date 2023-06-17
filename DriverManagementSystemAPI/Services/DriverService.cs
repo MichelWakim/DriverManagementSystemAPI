@@ -17,9 +17,9 @@ namespace DriverManagementSystemAPI.Services
             _repository = repository;
         }
 
-        public async Task<IEnumerable<Driver>?> GetAllDrivers()
+        public async Task<IEnumerable<Driver>?> GetAllDrivers(string? sortBy = null, string? sortOrder = null, string? searchTerm = null)
         {
-            return await _repository.GetAllDrivers();
+            return await _repository.GetAllDrivers(sortBy, sortOrder, searchTerm);
         }
 
         public async Task<Driver?> GetDriverById(int id)
@@ -54,6 +54,11 @@ namespace DriverManagementSystemAPI.Services
 
         public async Task DeleteDriver(int id)
         {
+            var driver = await GetDriverById(id);
+            if (driver == null)
+            {
+                throw new CustomException(1, 404, $"driver with id: {id} is not found");
+            }
             await _repository.DeleteDriver(id);
         }
     }
