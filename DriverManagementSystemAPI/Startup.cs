@@ -21,6 +21,13 @@ namespace DriverManagementSystemAPI
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAnyOrigin",
+                    builder => builder.AllowAnyOrigin()
+                                      .AllowAnyMethod()
+                                      .AllowAnyHeader());
+            });
             services.AddSwaggerGen();
             services.AddControllers();
             services.AddSingleton<IDriverRepository>(provider => new DriverRepository(Configuration["FilePath"]));
@@ -29,10 +36,16 @@ namespace DriverManagementSystemAPI
             {
                 options.SuppressModelStateInvalidFilter = true;
             });
+           
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+            // Use CORS middleware
+            app.UseCors("AllowAnyOrigin");
+
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
