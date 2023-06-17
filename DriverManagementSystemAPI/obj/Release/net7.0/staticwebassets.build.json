@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "FFR/mtGIz1+DrIV+HJifUhNZHXDCZM1xDrU1K9JM3N0=",
+  "Source": "DriverManagementSystemAPI",
+  "BasePath": "_content/DriverManagementSystemAPI",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
