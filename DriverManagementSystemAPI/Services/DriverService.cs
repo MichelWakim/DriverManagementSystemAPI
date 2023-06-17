@@ -46,7 +46,7 @@ namespace DriverManagementSystemAPI.Services
             var oldDriver = await GetDriverById(id);
             if (oldDriver == null)
             {
-                throw new CustomException(1,404 , $"driver with id: {id} is not found");
+                throw new CustomException(1, 404 , $"driver with id: {id} is not found");
             }
 
             return await _repository.UpdateDriver(id, driver);

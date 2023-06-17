@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace DriverManagementSystemAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class DriverController : ControllerBase
     {
         private readonly IDriverService _service;
@@ -73,7 +73,7 @@ namespace DriverManagementSystemAPI.Controllers
             }
             catch (CustomException ex)
             {
-                return BadRequest(ex);
+                return ExceptionHandler.HandleException(ex);
             }
 
         }
